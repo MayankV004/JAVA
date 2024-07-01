@@ -58,18 +58,18 @@ class CycleDetection
         createGraph(graph);
         boolean vis[] = new boolean[V];
         boolean rec[] = new boolean[V];
-        // for (int i = 0 ; i < V ; i++) // when graph is Disconnected  
-        // {                             // And Also works fine with normal Connected Graphs
-        //     if (!vis[i])
-        //     {
-        //         boolean isCycle = CycleDetectionDfs(graph , vis , 0 , rec);
-        //         if (isCycle)
-        //         {
-        //             System.out.println(isCycle);
-        //             break;
-        //         }
-        //     }
-        // }
+        for (int i = 0 ; i < V ; i++) // when graph is Disconnected  
+        {                             // And Also works fine with normal Connected Graphs
+            if (!vis[i])
+            {
+                boolean isCycle = CycleDetectionDfs(graph , vis , 0 , rec);
+                if (isCycle)
+                {
+                    System.out.println(isCycle);
+                    break;
+                }
+            }
+        }
         System.out.println(CycleDetectionDfs(graph , vis , 0 , rec));
 
     }
