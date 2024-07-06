@@ -33,6 +33,6 @@ class CountSubset
         int n = arr.length;
         int sum = 10;
         int ans = CountSubSet(arr , n , sum);
-        System.out.println("No Of Subsets : "+ans);
+        System.out.println("No Of Subsets : "+ ans);
     }
 }
