@@ -1,15 +1,10 @@
 import java.util.*;
-
-class PrintLCS
+class PrintSCS
 {
-    private static String printLCS(String a , String b , int n , int m)
+    private static String printSCS(String a , String b , int n , int m)
     {
         int [][]t = new int[n+1][m+1];
-        /*
-        Initialization -> First Row -> 0
-                          First Column -> 0
-        As for a numeric type 2D array default value is 0 . So not Initailising Explicitly  
-        */
+
         for(int i = 1 ; i <= n ; i++)
         {
             for(int j = 1 ; j <= m ; j++)
@@ -23,10 +18,10 @@ class PrintLCS
                     t[i][j] = Math.max(t[i][j-1] , t[i-1][j]);
                 }
             }
-        }
-        int i = n ; int j = m;
+        } 
         StringBuilder sb = new StringBuilder();
-        while(i > 0 && j > 0)
+        int i = n ; int j = m;
+        while( i > 0 && j > 0)
         {
             if(a.charAt(i-1) == b.charAt(j-1))
             {
@@ -34,28 +29,43 @@ class PrintLCS
                 i--;
                 j--;
             }
-            else
+            else 
             {
-                if(t[i][j-1] > t[i-1][j])
+                if(t[i][j-1] < t[i-1][j])
                 {
-                    j--;
+                    sb.append(a.charAt(i-1));
+                    i--;
                 }
                 else
                 {
-                    i--;
+                    sb.append(b.charAt(j-1));
+                    j--;
                 }
             }
+            
         }
+
+        while( i > 0 )
+        {
+            sb.append(a.charAt(i-1));
+            i--;
+        }
+        while( j > 0 )
+        {
+            sb.append(b.charAt(j-1));
+            j--;
+        }
+
         return sb.reverse().toString();
-        
+
     }
     public static void main(String [] args)
     {
-        String a = "acbcf";
-        String b = "abcfad";
+        String a = "AGGTAB";
+        String b = "GXTXAYB";
         int n = a.length(); 
-        int m = b.length(); 
-        String ans = printLCS(a,b,n,m);
-        System.out.println("Longest Common Subsequence is :" + ans);
+        int m = b.length();
+        String ans = printSCS(a,b,n,m);
+        System.out.println("Shorest Common SuperSequence : "+ans); 
     }
 }
