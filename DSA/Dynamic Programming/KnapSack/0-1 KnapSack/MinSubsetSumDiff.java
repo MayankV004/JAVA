@@ -36,7 +36,7 @@ class MinSubsetSumDiff
         ArrayList<Integer> list = new ArrayList<>();
         for(int i = 0 ; i <= range / 2 ; i++) // till range / 2 (Half tak range ki)
         {
-            if(t[n][i] == true)
+            if(t[n][i] == true) // last Row me half of range tak check kar rahe hain
             {
                 list.add(i);
             }
